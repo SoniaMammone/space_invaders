@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="indexStyle.css">
+    <title>Space Invaders Main Menu</title>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="menu">
+        <h1>Space Invaders</h1>
+        <button>Easy</button>
+        <button>Medium</button>
+        <button>Hard</button>
+    </div>
+    <script> 
+        function startGame(difficulty){
+            window.location.href = `game.html?difficulty=${difficulty}`
+        }
+    </script>
+</body>
+</html>
