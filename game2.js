@@ -1,3 +1,14 @@
+//TODO: scrivere funzione in cui in HARD si hanno meno bullet e 
+//e quando finiscono bisogna fare un reload e aspettare qualche secondo (set timeout)
+//mettere in cima a sinistra un count di bullet sparati
+//mettere una difficoltà in più chiamata ludicrous e per fare il reload bisogna premere il
+//bottone R
+//TODO: fai si che se la ship arrivi al limite x = 0 || board.width 
+//invece che non muoversi più si ritrova al fine opposto
+//TODO: implementare gameOver con schermata HTML optional: trovare modo di 
+//tenere traccia degli score es: YOU DIED! YOUR SCORE: 000 BEST SCORE: 000 
+
+
 //MATRICE
 let tileSize = 32;
 let rows = 16;
@@ -84,7 +95,7 @@ window.onload = function(){
 
 function update() {
     requestAnimationFrame(update);
-//TODO: implementare gameOver
+
     if (gameOver) {
         return;
     }
@@ -154,8 +165,7 @@ function update() {
     context.font="16px courier";
     context.fillText(score, 5, 20);
 }
-//TODO: fai si che se la ship arrivi al limite x = 0 || board.width 
-//invece che non muoversi più si ritrova al fine opposto
+
 function moveShip(e) {
     if (gameOver) {
         return;
@@ -188,8 +198,7 @@ function createAliens(){
     }
     alienCount = alienArray.length;
 }
-//TODO: scrivere funzione in cui in HARD si hanno meno bullet e 
-//e quando finiscono bisogna fare un reload e aspettare qualche secondo (set timeout)
+
 function shoot(e) {
     if (gameOver) {
         return;
