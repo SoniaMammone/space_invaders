@@ -89,17 +89,19 @@ window.onload = function() {
 }
 
 function update() {
+    
     requestAnimationFrame(update);
 
-    if (gameOver) {
-        return;
+    // if(isGameOver(alien, ship, score)){
+    //     return;
+    // }
+    if(gameOver){
+        return isGameOver();
     }
 
     context.clearRect(0, 0, board.width, board.height);
-
     
     context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height);
-
     
     for (let i = 0; i < alienArray.length; i++) {
         let alien = alienArray[i];
@@ -116,9 +118,10 @@ function update() {
             }
             context.drawImage(alienImg, alien.x, alien.y, alien.width, alien.height);
 
-            if (alien.y >= ship.y) {
+            if (alien.y >= ship.y){
                 gameOver = true;
             }
+            
         }
     }
 
@@ -160,11 +163,13 @@ function update() {
     context.fillStyle="white";
     context.font="16px courier";
     context.fillText(score, 5, 20);
+
+    
 }
 
 function moveShip(e) {
-    if (gameOver) {
-        return;
+    if(gameOver){
+        return isGameOver(alien, ship, score);
     }
 
     if (e.code == "ArrowLeft" && ship.x - shipVelocityX >= 0) {
@@ -193,8 +198,8 @@ function createAliens() {
 }
 
 function shoot(e) {
-    if (gameOver) {
-        return;
+    if(gameOver){
+        return isGameOver(alien, ship, score);
     }
 
     if (e.code == "Space") {
@@ -214,5 +219,13 @@ function detectCollision(a, b) {
            a.x + a.width > b.x &&   
            a.y < b.y + b.height &&  
            a.y + a.height > b.y;    
+}
+
+function isGameOver(){
+    if (alien.y >= ship.y) {
+        gameOver = true;
+        window.alert("Game Over!\n" + "Your score: " + score);
+    }
+    return gameOver;
 }
 
